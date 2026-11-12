@@ -507,7 +507,7 @@ ${sec('Avant la tempête : ses mots de dirigeant')}
 
 depart:{t:'Le 12 novembre 2026',r:()=>`
 ${sec('Cinq jours pour clore 33 ans','Du dimanche 8 au jeudi 12 novembre 2026, la chronologie d\'un départ que personne n\'attendait un mois plus tôt, quand l\'action battait son record.')}
-<div class="grid g4">${kpi('Durée du mandat','33 ans','7 mois et 7 jours, du 5 avril 1993 au 12 novembre 2026')}${kpi('L\'action en 4 séances','− 16,5 %','de 186,65 $ à 155,81 $ avant l\'ouverture','rose')}${kpi('Valeur effacée le 12 au matin','≈ 432 <small>Md$</small>','par rapport à la clôture de la veille','amber')}${kpi('Depuis le record d\'octobre','− 2 000 <small>Md$</small>','et plus, selon Yahoo Finance','violet')}</div>
+<div class="grid g4">${kpi('Durée du mandat','33 ans','7 mois et 7 jours, du 5 avril 1993 au 12 novembre 2026')}${kpi('L\'action en 4 séances','− 11,0 %','de 186,64 $ à 166,19 $ à la clôture du 12','rose')}${kpi('Valeur effacée en 4 séances','≈ 500 <small>Md$</small>','depuis la clôture du 6 novembre','amber')}${kpi('Depuis le record d\'octobre','− 2 000 <small>Md$</small>','et plus, selon Yahoo Finance','violet')}</div>
 <div class="grid g2" style="margin-top:16px">
  <div class="card"><h3>La chronologie</h3><div class="tl" style="margin-top:12px">
   <div class="ev"><div><b>8 nov.</b><strong>La lettre et l'enquête</strong><p>Dimanche soir, il écrit aux salariés et présente ses excuses. Le conseil ouvre une enquête indépendante et lui renouvelle sa confiance.</p></div></div>
@@ -516,14 +516,14 @@ ${sec('Cinq jours pour clore 33 ans','Du dimanche 8 au jeudi 12 novembre 2026, l
   <div class="ev key"><div><b>12 nov.</b><strong>8 h 48, heure de New York</strong><p>Le communiqué tombe : démission immédiate de la présidence, de la direction générale et du conseil. Colette Kress, directrice financière depuis 2013, devient directrice générale par intérim. Harvey C. Jones, ancien patron de Synopsys, devient le premier président du conseil.</p></div></div>
   <div class="ev"><div><b>17 nov.</b><strong>La suite</strong><p>Publication des résultats du troisième trimestre, attendus autour de 108 Md$ de ventes. Première épreuve pour la nouvelle direction.</p></div></div>
  </div></div>
- <div class="card"><h3>L'action pendant la crise</h3><div class="sub">Cours de clôture en dollars ; le 12 novembre, cotation avant l'ouverture</div><div class="ch tall"><canvas id="c1"></canvas></div></div>
+ <div class="card"><h3>L'action pendant la crise</h3><div class="sub">Cours de clôture en dollars ; le 12 novembre, plus bas en séance à 148,80 $ puis clôture à 166,19 $ (− 4,34 %)</div><div class="ch tall"><canvas id="c1"></canvas></div></div>
 </div>
 <div class="grid g3" style="margin-top:16px">
  <div class="card"><h3>Ce qu'il laisse</h3><p>Une entreprise de 42 000 salariés, 215,9 Md$ de ventes annuelles, 75 % de marge brute, et une feuille de route produits tracée jusqu'à la génération Vera Rubin.</p></div>
  <div class="card"><h3>Qui dirige maintenant</h3><p>Colette Kress, 59 ans, cumule la direction générale par intérim et la direction financière. Le conseil cherche un successeur en interne comme à l'extérieur, sans calendrier annoncé. <a href="#succession">Voir L'après Jensen</a>.</p></div>
  <div class="card"><h3>Ce qui reste ouvert</h3><p>Le communiqué ne dit rien de l'état de l'enquête. Aucune conclusion mettant en cause la sécurité nationale n'a été rendue publique à ce jour.</p></div>
 </div>`,
-after(){base();mk('c1',{type:'line',data:{labels:['Record, oct.','6 nov.','9 nov.','11 nov.','12 nov. (pré-ouverture)'],datasets:[{data:[239,186.65,178.67,173.73,155.81],borderColor:css('--rose'),backgroundColor:c=>grad(c,css('--rose')),fill:true,tension:.2,pointRadius:5,pointBackgroundColor:css('--rose'),borderWidth:2.5}]},options:{plugins:{...noLeg,tooltip:tipf('$',2)},scales:{x:{grid:{display:false}},y:{min:140,ticks:{callback:v=>v+' $'}}}}})}},
+after(){base();mk('c1',{type:'line',data:{labels:['Record, oct.','6 nov.','9 nov.','11 nov.','12 nov.'],datasets:[{data:[239,186.64,178.67,173.73,166.19],borderColor:css('--rose'),backgroundColor:c=>grad(c,css('--rose')),fill:true,tension:.2,pointRadius:5,pointBackgroundColor:css('--rose'),borderWidth:2.5}]},options:{plugins:{...noLeg,tooltip:tipf('$',2)},scales:{x:{grid:{display:false}},y:{min:140,ticks:{callback:v=>v+' $'}}}}})}},
 
 succession:{t:'L\'après Jensen',r:()=>`
 ${sec('Qui dirige Nvidia maintenant','Depuis le 12 novembre 2026, l\'entreprise est conduite par celle qui en tenait les comptes depuis treize ans, le temps de trouver un successeur.')}
@@ -702,7 +702,7 @@ ${sec('Les six divisions du titre')}
 ${[['Juin 2000','2 pour 1',2],['Septembre 2001','2 pour 1',4],['Avril 2006','2 pour 1',8],['Septembre 2007','3 pour 2',12],['Juillet 2021','4 pour 1',48],['Juin 2024','10 pour 1',480]].map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td class="num"><b>${r[2]}</b></td></tr>`).join('')}</table></div>`,
 after(){base();const df=d=>new Date(d).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
  $('#msb').innerHTML=MS.map((m,i)=>{let r=df(m[1]);if(i>0)r+=' · '+Math.round((new Date(m[1])-new Date(MS[i-1][1]))/864e5)+' jours plus tard';else r+=' · 24 ans après l\'introduction';return `<div class="ms"><b>${m[0]}</b><div class="bar"><i style="width:${m[2]/50}%"></i></div><div class="r">${r}</div></div>`}).join('');
- mk('c1',barCfg(['Pic, oct. 2026','6 nov.','11 nov.','12 nov. (pré-ouverture)'],[5700,4510,4190,3760],[css('--gold'),css('--amber'),css('--rose'),css('--rose')],'Md$',{d:0}));
+ mk('c1',barCfg(['Pic, oct. 2026','6 nov.','11 nov.','12 nov.'],[5700,4510,4190,4010],[css('--gold'),css('--amber'),css('--rose'),css('--rose')],'Md$',{d:0}));
 }},
 
 temps:{t:'La machine à remonter le temps',r:()=>`
@@ -752,7 +752,7 @@ after(){base();const opts=PX_Y.slice(0,-1).map((l,i)=>[i===0?'Introduction, janv
 
 actions:{t:'Ses actions',r:()=>`
 ${sec('Un fondateur à 3,58 %','Pas d\'actions à droits de vote multiples chez Nvidia : une action, une voix. Sa fortune suit donc le cours au dollar près, et le conseil pouvait décider sans lui.')}
-<div class="grid g4">${kpi('Actions détenues','870,6 <small>M</small>','au 23 mars 2026, circulaire aux actionnaires')}${kpi('Part du capital','3,58 %','premier actionnaire individuel connu','violet')}${kpi('Valeur au 6 novembre','162,5 <small>Md$</small>','à 186,65 $ l\'action','gold')}${kpi('Par dollar de cours','871 <small>M$</small>','gagnés ou perdus','sky')}</div>
+<div class="grid g4">${kpi('Actions détenues','870,6 <small>M</small>','au 23 mars 2026, circulaire aux actionnaires')}${kpi('Part du capital','3,58 %','premier actionnaire individuel connu','violet')}${kpi('Valeur au 6 novembre','162,5 <small>Md$</small>','à 186,64 $ l\'action','gold')}${kpi('Par dollar de cours','871 <small>M$</small>','gagnés ou perdus','sky')}</div>
 <div class="grid g2" style="margin-top:16px">
  <div class="card sim"><h3>Ce que vaut sa participation</h3>
   <div class="row"><span>Cours de l'action Nvidia</span><b id="pI"></b></div><input type="range" id="pR" min="40" max="260" step="0.01" value="173.73">
@@ -769,7 +769,7 @@ ${sec('Un fondateur à 3,58 %','Pas d\'actions à droits de vote multiples chez 
  <div class="card"><h3>Pourquoi cela compte</h3><p>Avec 3,58 % et une seule catégorie d'actions, il n'a jamais contrôlé Nvidia par le vote. Il la dirigeait par la confiance du conseil, pas par la loi du capital.</p></div>
 </div>`,
 after(){base();const up=()=>{const p=+$('#pR').value;$('#pI').textContent=fr(p,2)+' $';$('#pO').textContent=fr(SH*p/1e9,1)+' Md$';$('#pC').textContent=fr(OUT*p/1e9,0)+' Md$'};
- $('#pCh').innerHTML=[['Record, oct. 2026',239],['6 nov.',186.65],['11 nov.',173.73],['12 nov., pré-ouverture',155.81],['Fin 2022',14.6]].map(c=>`<button class="chip" data-p="${c[1]}">${c[0]} · ${fr(c[1],2)} $</button>`).join('');
+ $('#pCh').innerHTML=[['Record, oct. 2026',239],['6 nov.',186.64],['11 nov.',173.73],['12 nov., clôture',166.19],['Fin 2022',14.6]].map(c=>`<button class="chip" data-p="${c[1]}">${c[0]} · ${fr(c[1],2)} $</button>`).join('');
  $('#pCh').onclick=e=>{const b=e.target.closest('.chip');if(b){$('#pR').value=Math.max(40,b.dataset.p);$('#pR').dataset.real=b.dataset.p;const p=+b.dataset.p;$('#pI').textContent=fr(p,2)+' $';$('#pO').textContent=fr(SH*p/1e9,1)+' Md$';$('#pC').textContent=fr(OUT*p/1e9,0)+' Md$'}};
  $('#pR').oninput=up;up();
  mk('c1',{type:'bar',data:{labels:['BlackRock','Vanguard','Jensen Huang'],datasets:[{data:[7.43,7.31,3.58],backgroundColor:[css('--ink3'),css('--ink3'),css('--green2')],borderRadius:6,maxBarThickness:44}]},options:{indexAxis:'y',plugins:{...noLeg,tooltip:{callbacks:{label:c=>' '+fr(c.parsed.x,2)+' %'}}},scales:{x:{ticks:{callback:v=>v+' %'}},y:{grid:{display:false}}}}});
